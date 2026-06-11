@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For You, Arjita ❤️</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght=700&family=Poppins:wght=400;600;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; }
+        
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            overflow: hidden;
+            background-color: #ffd1dc;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            transition: background-image 0.8s ease-in-out, background-color 0.5s ease-in-out;
+        }
+
+        /* Message Box / Card Base */
+        #card {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(12px);            
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 45px 35px;
+            border-radius: 30px;
+            box-shadow: 0 25px 55px rgba(0, 0, 0, 0.1); 
+            text-align: center;
+            width: 600px; 
+            max-width: 92%;
+            z-index: 10;
+            position: relative;
+            min-height: 520px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        h1, p { 
+            line-height: 1.6; 
+            margin: 0 0 20px 0;
+        }
+        
+        h1 { 
+            font-size: 30px;        
+            font-weight: 800;       
+            color: #c2185b;         
+            text-shadow: 0 1px 2px rgba(255, 255, 255, 0.6);
+        }
+        
+        p { 
+            font-size: 21px;        
+            color: #2c3e50;         
+            font-weight: 600;       
+        }
+
+        /* Maxed-Out Sandbox Container for Maximum Dodging Freedom */
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            min-height: 240px;
+            position: relative; 
+            width: 100%;
+            margin-top: auto;
+        }
+
+        button {
+            padding: 14px 40px;    
+            font-size: 20px;
+            border-radius: 50px;
+            border: none;
+            cursor: pointer;
+            font-weight: 800;
+            transition: background-color 0.3s, transform 0.1s;
+        }
+
+        button:active {
+            transform: scale(0.96);
+        }
+
+        .primary-btn {
+            background-color: #ff3377;
+            color: white;
+            box-shadow: 0 6px 20px rgba(255, 51, 119, 0.4);
+            position: relative;
+            transition: left 0.12s ease-out, top 0.12s ease-out;
+        }
+
+        #noBtn {
+            background-color: #ffffff;
+            color: #333333;
+            border: 2px solid rgba(0,0,0,0.1);
+            z-index: 99;
+            position: relative; 
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: left 0.12s ease-out, top 0.12s ease-out; 
+        }
+
+        .hidden { display: none !important; }
+
+        .vow-title { font-family: 'Dancing Script', cursive; font-size: 48px; color: #c2185b; margin-bottom: 20px; font-weight: 700; }
+        .vow-content {
+            font-size: 19px; line-height: 1.6; color: #1a252f; font-weight: 600;
+            background: rgba(255, 255, 255, 0.5); padding: 25px; 
+            border-radius: 20px; border-left: 6px solid #ff3377; text-align: left;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.02);
+        }
+
+        @keyframes slowVibrateInflate {
+            0% { transform: scale(1); }
+            20% { transform: scale(1.1) translate(-2px, 1px); }
+            40% { transform: scale(1.2) translate(1px, -2px); }
+            60% { transform: scale(1.35) translate(-1px, -1px); }
+            80% { transform: scale(1.5) translate(2px, 2px); opacity: 0.9; }
+            100% { transform: scale(1.8); opacity: 0; }
+        }
+        .explode-animation { 
+            animation: slowVibrateInflate 1.2s cubic-bezier(0.4, 0, 0.2, 1) forwards; 
+            pointer-events: none; 
+        }
+
+        .particle { 
+            position: absolute; 
+            pointer-events: none; 
+            z-index: 99999; 
+            font-size: 32px; 
+            user-select: none;
+            animation: slowBurstOut 2.5s cubic-bezier(0.05, 0.7, 0.2, 1) forwards; 
+        }
+        @keyframes slowBurstOut {
+            0% { transform: translate(0, 0) scale(0.3); opacity: 1; }
+            80% { opacity: 0.9; }
+            100% { transform: translate(var(--mx), var(--my)) scale(1.6) rotate(var(--rot)); opacity: 0; }
+        }
+
+        .closing-heart { position: absolute; pointer-events: none; z-index: 5; font-size: var(--sz); animation: floatUpward var(--dur) linear forwards; }
+        @keyframes floatUpward {
+            0% { transform: translateY(105vh) translateX(0); opacity: 1; }
+            100% { transform: translateY(-10vh) translateX(var(--tx)); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hidden form wrapper to process mail dispatch seamlessly -->
+    <form id="notificationForm" action="https://formspree.io/your-email" method="POST" class="hidden">
+    <input type="email" name="_to" value="devesh1627@gmail.com">
+    <input type="text" name="subject" value="Proposal Status Notification">
+    <input type="text" name="message" value="Alert: The 'No' button was selected on the proposal question.">
+</form>
+
+    <audio id="audio1" preload="auto">
+        <source src="music_1.MPEG" type="audio/mpeg">
+    </audio>
+    <audio id="audio2" preload="auto">
+        <source src="music_2.MPEG" type="audio/mpeg">
+    </audio>
+
+    <div id="card">
+        <div id="opening-box">
+            <h1>Arjita, I wanted to tell you something; shall I?</h1>
+            <div class="btn-container">
+                <button class="primary-btn" onclick="startExperience()">Yesss….. Go On 😊</button>
+            </div>
+        </div>
+
+        <div id="quiz-box" class="hidden" style="display: flex; flex-direction: column; justify-content: space-between; height: 100%; flex-grow: 1;">
+            <h1 id="question-text"></h1>
+            <div class="btn-container" id="quiz-btns">
+                <button id="yesBtn" class="primary-btn" onmouseover="dodgeYes()" onclick="triggerYesExplosion()">Yes ☺️</button>
+                <button id="noBtn" onmouseover="dodgeNo()" onclick="handleNoClick()">No ☹️</button>
+            </div>
+        </div>
+
+        <div id="note-box" class="hidden" onmouseenter="pauseNoteCountdown()" onmouseleave="resumeNoteCountdown()">
+            <div class="vow-title">My Promise ✨</div>
+            <div class="vow-content" id="note-text"></div>
+        </div>
+
+        <div id="close-box" class="hidden">
+            <div class="vow-title" style="font-size: 52px;">Forever Yours... ❤️</div>
+            <p id="final-love-text" style="font-size: 22px; font-weight: 800; color: #c2185b;">Arjita, I feel very blessed 😇😇 to have you in my life. I love you 😘😘😍😍🥰🥰…</p>
+        </div>
+    </div>
+
+    <script>
+        let currentStep = 1;
+        let noteTimer = null;
+        let timeLeft = 5000;
+        let lastTimestamp = null;
+        let isPaused = false;
+        let yesHasDodged = false; // Flag to ensure Yes button only jumps exactly once on step 8
+
+        const contentData = {
+            1: { img: "image_1.JPG", q: "I love you 💕 💕 💕, and I know that you also love me, but still… Mai fir se sunana chahunga.<br><br>Do you love me?", n: "I, too, love you and will love💕 😘 you forever ♾️…. Till this earth exists, till this solar system 🌌🌠 exists, till this galaxy exists, till this universe 🌌 exists…" },
+            2: { img: "image_2.JPG", q: "Mai jab bhi tumhare saath 👫👫 hota hu to bahut sukoon milta hai. Aisi chahat hoti hai ki tum hamesha mere saath 👩❤️👨 raho.<br><br>Kya tum jivan bhar mere saath rahogi?", n: "Mai bhi tumse vaada karta hu ki chaahe jaise bhi circumstances ho, mai hamesha tumhare saath rahunga 👫🤝, tumhare support mein. (Haan, agar ham dono me se koi bhi galat raste pe ho to ek dusre ko sahi raah dikhaayenge.)" },
+            3: { img: "image_3.JPG", q: "I want to live my life with you 😊, wake up every morning with you ⏰⏰🛏️🌻, watch the sunrise 🌇🌆 with you every day, and do many more things...<br><br>Kya tum bhi aisa hi kuchh chahti ho?", n: "I promise ki mai tumhare saath bitaayi huyi har ek pal, har ek lamhe ko bahut special ✨✨🌻 tareeke se jiuunga …… bas tum mera saath dena." },
+            4: { img: "image_4.JPG", q: "I want to love you 💖😘, respect you 🫡, make you happy 😁😁, and look after you 💅🤘✨ and our family.<br><br>Do you also want the same?", n: "I promise to walk beside you as we build our life together 🌻💖. I vow to provide for your happiness 🤗, care for your well-being, and work hard to make our home a place of warmth, comfort, and nourishment every single day 🫂🫂" },
+            5: { img: "image_5.JPG", q: "I want to become your physical🏋️‍♂️, emotional 🤩and spiritual strength💪💪 in difficult times.<br><br>Will you be my strength in the same way?", n: "I promise to stand by you through every challenge life throws our way. I vow to be your safe harbour in every storm 👩❤️👨🫂." },
+            6: { img: "image_6.JPG", q: "I want to prosper with you. I want to grow with you and become wealthy 💎💎…<br><br>Do you wish the same?", n: "I promise to manage our life and resources with wisdom and honesty. I vow to work hand-in-hand with you so that we grow 🔥 in prosperity 🎉🎉 and share our success openly 🫂." },
+            7: { img: "image_7.JPG", q: "I want to become your lifelong companion, your true friend🙂🥰🤗🫂, a loyal partner, and your soulmate😇😇.<br><br>Do you promise the same?", n: "I promise to be your ultimate companion, your truest friend 😇😇🫂🫂. I belong to you ✨💫💝💞, and I promise to love 💗♥️ you unconditionally 💐🌹🌹🪷🌸🏵️ for the rest of my life <br><br>☺️😊😚😘🥰😍😇😇🥳🥳😘" },
+            8: { img: "image_8.JPG", q: "Will you marry 💒💐💍 me ……", n: null }
+        };
+
+        const burstEmojis = ['💕', '💖', '❤️', '💝', '😍', '🥰', '🌹', '💐', '🌷', '🏵️', '😘'];
+
+        window.onload = function() {
+            setBackground("image_opening.JPG");
+        };
+
+        function setBackground(imgName) {
+            document.body.style.backgroundImage = "url('" + imgName + "?t=" + new Date().getTime() + "')";
+        }
+
+        function handleAudioPlayback() {
+            const a1 = document.getElementById('audio1');
+            const a2 = document.getElementById('audio2');
+            a1.volume = 0.9; a2.volume = 0.9;
+            a1.onended = function() { a2.play().catch(e => {}); };
+            a2.onended = function() { a1.play().catch(e => {}); };
+            if (a1.paused && a2.paused) {
+                a1.play().catch(err => { a2.play().catch(e => {}); });
+            }
+        }
+
+        function startExperience() {
+            handleAudioPlayback();
+            document.getElementById('opening-box').className = 'hidden';
+            loadQuizStage();
+        }
+
+        function loadQuizStage() {
+            const noBtn = document.getElementById('noBtn');
+            const yesBtn = document.getElementById('yesBtn');
+            
+            // Reset positional rules elegantly on new steps
+            noBtn.style.position = 'relative';
+            noBtn.style.left = '0px';
+            noBtn.style.top = '0px';
+            yesBtn.style.position = 'relative';
+            yesBtn.style.left = '0px';
+            yesBtn.style.top = '0px';
+
+            const data = contentData[currentStep];
+            setBackground(data.img);
+            
+            document.getElementById('question-text').innerHTML = data.q;
+            yesBtn.className = "primary-btn";
+            
+            document.getElementById('note-box').className = 'hidden';
+            document.getElementById('quiz-box').className = '';
+        }
+
+        // Logic controlling the Yes button's evasion traits
+        function dodgeYes() {
+            if (currentStep !== 8 || yesHasDodged) return; // Only dodge on the last question, and only exactly once
+            
+            handleAudioPlayback();
+            const yesBtn = document.getElementById('yesBtn');
+            const container = document.getElementById('quiz-btns');
+            
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+            const btnWidth = yesBtn.offsetWidth || 110;
+            const btnHeight = yesBtn.offsetHeight || 55;
+
+            const paddingX = 10;
+            const paddingY = 12;
+
+            const maxX = containerWidth - btnWidth - paddingX;
+            const maxY = containerHeight - btnHeight - paddingY;
+
+            // Pick a dramatic alternative target area
+            let targetX = paddingX + Math.random() * (maxX - paddingX);
+            let targetY = paddingY + Math.random() * (maxY - paddingY);
+
+            yesBtn.style.position = 'absolute';
+            yesBtn.style.left = Math.floor(targetX) + 'px';
+            yesBtn.style.top = Math.floor(targetY) + 'px';
+            
+            yesHasDodged = true; // Locks down the button from ever dodging again
+        }
+
+        function dodgeNo() {
+            if (currentStep === 8) return; // Do absolutely nothing if it's the final question
+            
+            handleAudioPlayback();
+            const noBtn = document.getElementById('noBtn');
+            const container = document.getElementById('quiz-btns');
+            
+            const containerWidth = container.clientWidth;
+            const containerHeight = container.clientHeight;
+            const btnWidth = noBtn.offsetWidth || 110;
+            const btnHeight = noBtn.offsetHeight || 55;
+
+            const paddingX = 10;
+            const paddingY = 12;
+
+            const maxX = containerWidth - btnWidth - paddingX;
+            const maxY = containerHeight - btnHeight - paddingY;
+
+            const currentX = parseFloat(noBtn.style.left) || (containerWidth / 2);
+            const currentY = parseFloat(noBtn.style.top) || (containerHeight / 2);
+
+            let targetX, targetY;
+            let separationDistance = 0;
+            let calculationAttempts = 0;
+
+            while (separationDistance < 130 && calculationAttempts < 25) {
+                targetX = paddingX + Math.random() * (maxX - paddingX);
+                targetY = paddingY + Math.random() * (maxY - paddingY);
+                
+                separationDistance = Math.sqrt(Math.pow(targetX - currentX, 2) + Math.pow(targetY - currentY, 2));
+                calculationAttempts++;
+            }
+
+            noBtn.style.position = 'absolute';
+            noBtn.style.left = Math.floor(targetX) + 'px';
+            noBtn.style.top = Math.floor(targetY) + 'px';
+        }
+
+        // Triggered when No is clicked
+        function handleNoClick() {
+            if (currentStep === 8) {
+                // 1. Instantly pivot page styles to a dark theme
+                document.body.style.backgroundImage = 'none';
+                document.body.style.backgroundColor = '#000000';
+                
+                // Adjust card overlay to maintain balanced contrast against pure black backgrounds
+                const card = document.getElementById('card');
+                card.style.background = 'rgba(20, 20, 20, 0.85)';
+                card.style.borderColor = 'rgba(255, 255, 255, 0.15)';
+                
+                document.getElementById('quiz-box').className = 'hidden';
+                
+                // 2. Set the custom requested warning message
+                const closeBox = document.getElementById('close-box');
+                closeBox.querySelector('.vow-title').style.color = '#ff3344';
+                closeBox.querySelector('.vow-title').innerText = 'Attention...';
+                
+                const loveText = document.getElementById('final-love-text');
+                loveText.style.color = '#ffffff';
+                loveText.innerHTML = 'please dont say this in MAZAK also';
+                
+                closeBox.className = '';
+
+                // 3. Dispatch Formspree Background Email Notification
+                const form = document.getElementById('notificationForm');
+                const data = new FormData(form);
+                
+                fetch(form.action, {
+                    method: form.method,
+                    body: data,
+                    headers: { 'Accept': 'application/json' }
+                }).catch(err => { console.log('Mail payload queue skipped.'); });
+                
+            } else {
+                // Fallback click handle logic for pre-step-8 stages
+                dodgeNo();
+            }
+        }
+
+        function triggerYesExplosion() {
+            handleAudioPlayback();
+            const yesBtn = document.getElementById('yesBtn');
+            yesBtn.classList.add('explode-animation');
+
+            const rect = yesBtn.getBoundingClientRect();
+            const centerX = rect.left + (rect.width / 2);
+            const centerY = rect.top + (rect.height / 2);
+
+            for (let i = 0; i < 180; i++) {
+                createEmojiParticle(centerX, centerY);
+            }
+
+            setTimeout(() => { proceedPastQuiz(); }, 3000);
+        }
+
+        function createEmojiParticle(x, y) {
+            const p = document.createElement('div');
+            p.classList.add('particle');
+            p.innerHTML = burstEmojis[Math.floor(Math.random() * burstEmojis.length)];
+            
+            const angle = Math.random() * Math.PI * 2;
+            const distance = 200 + Math.random() * (window.innerWidth * 0.8); 
+            const moveX = Math.cos(angle) * distance;
+            const moveY = Math.sin(angle) * distance;
+            const rotation = Math.random() * 1080 - 540;
+
+            p.style.setProperty('--mx', `${moveX}px`);
+            p.style.setProperty('--my', `${moveY}px`);
+            p.style.setProperty('--rot', `${rotation}deg`);
+            p.style.left = `${x}px`;
+            p.style.top = `${y}px`;
+
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 2500);
+        }
+
+        function proceedPastQuiz() {
+            document.getElementById('quiz-box').className = 'hidden';
+            const currentData = contentData[currentStep];
+
+            if (currentStep === 8) {
+                showFinalCelebration();
+            } else {
+                showVowNote(currentData.n);
+            }
+        }
+
+        function showVowNote(text) {
+            document.getElementById('note-text').innerHTML = text;
+            document.getElementById('note-box').className = '';
+            
+            timeLeft = 5000;
+            isPaused = false;
+            lastTimestamp = performance.now();
+            
+            if (noteTimer) cancelAnimationFrame(noteTimer);
+            noteTimer = requestAnimationFrame(countdownLoop);
+        }
+
+        function countdownLoop(timestamp) {
+            if (!lastTimestamp) lastTimestamp = timestamp;
+            const elapsed = timestamp - lastTimestamp;
+            lastTimestamp = timestamp;
+
+            if (!isPaused) timeLeft -= elapsed;
+
+            if (timeLeft <= 0) {
+                closeNoteAndAdvance();
+            } else {
+                noteTimer = requestAnimationFrame(countdownLoop);
+            }
+        }
+
+        function pauseNoteCountdown() { isPaused = true; }
+        document.getElementById('note-box').onmouseenter = pauseNoteCountdown;
+        document.getElementById('note-box').ontouchstart = pauseNoteCountdown;
+
+        function resumeNoteCountdown() {
+            isPaused = false;
+            lastTimestamp = performance.now();
+        }
+        document.getElementById('note-box').onmouseleave = resumeNoteCountdown;
+        document.getElementById('note-box').ontouchend = resumeNoteCountdown;
+
+        function closeNoteAndAdvance() {
+            if (noteTimer) cancelAnimationFrame(noteTimer);
+            currentStep++;
+            loadQuizStage();
+        }
+
+        function showFinalCelebration() {
+            setBackground("image_close.JPG");
+            document.getElementById('note-box').className = 'hidden';
+            document.getElementById('quiz-box').className = 'hidden';
+            document.getElementById('close-box').className = '';
+            setInterval(spawnClosingHeart, 200);
+        }
+
+        function spawnClosingHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('closing-heart');
+            const heartTypes = ['❤️', '💖', '💕', '💝', '🥰'];
+            heart.innerHTML = heartTypes[Math.floor(Math.random() * heartTypes.length)];
+            
+            heart.style.setProperty('--sz', `${20 + Math.random() * 30}px`);
+            heart.style.setProperty('--dur', `${4 + Math.random() * 4}s`);
+            heart.style.setProperty('--tx', `${(Math.random() * 400) - 200}px`);
+            heart.style.left = `${Math.random() * 100}vw`;
+            
+            document.body.appendChild(heart);
+            setTimeout(() => heart.remove(), 8000);
+        }
+    </script>
+</body>
+</html>
